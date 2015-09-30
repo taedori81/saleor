@@ -110,6 +110,9 @@ class UserManager(BaseUserManager):
 @python_2_unicode_compatible
 class User(PermissionsMixin, models.Model):
     email = models.EmailField(unique=True)
+    # Adding Last name and First name for using user menu in wagtail
+    last_name = models.CharField(max_length=50, blank=True)
+    first_name = models.CharField(max_length=50, blank=True)
     addresses = models.ManyToManyField(Address, blank=True)
     is_staff = models.BooleanField(
         pgettext_lazy('User field', 'staff status'),
